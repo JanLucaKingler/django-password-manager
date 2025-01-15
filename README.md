@@ -104,6 +104,10 @@ Replace `myapp` with the name of your app.
   ```bash
   pip install <package_name>
   ```
+  Example:
+  ```bash
+  pip install djangorestframework
+  ```
 
 - **Freeze dependencies to a file**:
   ```bash
@@ -113,6 +117,37 @@ Replace `myapp` with the name of your app.
 - **Install dependencies from `requirements.txt`**:
   ```bash
   pip install -r requirements.txt
+  ```
+
+- **Run the development server**:
+  ```bash
+  python manage.py runserver
+  ```
+  Access the server at `http://127.0.0.1:8000/`.
+
+- **Make migrations for database changes**:
+  ```bash
+  python manage.py makemigrations
+  ```
+
+- **Apply migrations to the database**:
+  ```bash
+  python manage.py migrate
+  ```
+
+- **Create a superuser for admin access**:
+  ```bash
+  python manage.py createsuperuser
+  ```
+
+- **Check for potential issues in the project**:
+  ```bash
+  python manage.py check
+  ```
+
+- **Run tests for the project**:
+  ```bash
+  python manage.py test
   ```
 
 ---
