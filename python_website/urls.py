@@ -20,13 +20,15 @@ from django.contrib import admin
 from django.urls import path
 from mydjango import views
 
-from mydjango.views import mydjango
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('django/',mydjango),
-    path('signup/',views.SignUpPage),
     path('login/',views.LoginPage),
+    path('signup/',views.SignUpPage),
+
+
+
 
 
 

@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 
 
 # Create your views here.
-def mydjango(request):
-    return render(request, 'django.html')
 
 
 def SignUpPage(request):
