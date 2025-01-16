@@ -24,8 +24,10 @@ from mydjango import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/',views.LoginPage),
-    path('signup/',views.SignUpPage),
+    path('signup/',views.signuppage, name = "signup"),
+    path('login/',views.loginpage, name = "login"),
+    path('home/', views.homepage, name = "home"),
+    path('logout/', views.logoutpage, name = "logout")
 
 
 

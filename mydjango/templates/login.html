@@ -14,16 +14,17 @@
 <body>
 
 <div class="wrapper">
-    <form action="">
+    <form action="" method="post">
+        {% csrf_token %}
         <h1> Login</h1>
 
         <div class="input-box">
-            <input type="text" placeholder="Username" required>
+            <input type="text" placeholder="Username" id="username" name="username"  required>
             <i class='bx bxs-user'></i>
         </div>
 
         <div class="input-box">
-            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Password" id="password" name="password" required>
             <i class='bx bxs-lock-alt'></i>
         </div>
 
@@ -36,7 +37,7 @@
 
         <div class="register-link">
             <p>Don't have an account?<a
-                    href="#">Register </a></p>
+                    href="http://192.168.178.44:8000/signup/">Register </a></p>
         </div>
     </form>
 </div>

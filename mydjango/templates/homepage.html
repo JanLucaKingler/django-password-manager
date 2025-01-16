@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% csrf_token %}
+</head>
+<body>
+Hello World
+
+
+<a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+</body>
+</html>
