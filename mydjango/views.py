@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+import mydjango
+
 
 # Create your views here.
 
@@ -46,3 +48,6 @@ def loginpage(request):
 def logoutpage(request):
     logout(request)
     return redirect('login')
+
+def overview(request):
+    return render(request, "button.html")
