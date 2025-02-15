@@ -42,7 +42,7 @@ body {
 }
 
 .sidebar .sidebar-header h2 {
-  color: white;
+  color: #fff;
   font-size: 1.25rem;
   font-weight: 600;
   white-space: nowrap;
@@ -147,6 +147,7 @@ body {
 }
 
 .sidebar:hover .user-account {
-  background: purple;
+  background: #fff;
   border-radius: 4px;
 }
+
