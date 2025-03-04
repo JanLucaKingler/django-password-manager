@@ -1,14 +1,19 @@
+import string
+import re
+import random
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.views import View
+from .forms import PassGenForm
 import mydjango
+from mydjango.forms import PassGenForm
 
 
 # Create your views here.
-
+@login_required(login_url="login")
 @login_required(login_url='login')
 def homepage(request):
     return render(request, "homepage.html")
@@ -49,5 +54,31 @@ def logoutpage(request):
     logout(request)
     return redirect('login')
 
+
 def overview(request):
     return render(request, "button.html")
+
+
+class Index(View):
+    def get(self, request):
+        form = PassGenForm()
+
+        context = {'form': form}
+        return render(request, 'index.html', context)
+
+    def post(self, request):
+
+        form = PassGenForm(request.POST)
+
+        if form.is_valid():
+            available_charaters = string.ascii_letters + string.digits
+
+            if form.cleaned_data['include_symbols']:
+                available_charaters += string.punctuation
+
+            if not form.cleaned_data['include_similar_characters']:
+                ambiguous_characters = 'lI1O0Z2S5'  # Ambiguous characters to be excluded
+                available_charaters = re.sub('|'.join(ambiguous_characters), '', available_charaters)
+
+            password = ''.join(random.choice(available_charaters) for i in range(form.cleaned_data['length']))
+        return render(request, 'password.html', {'password': password})

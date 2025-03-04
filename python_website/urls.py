@@ -19,23 +19,17 @@ from codecs import namereplace_errors
 from django.contrib import admin
 from django.urls import path
 from mydjango import views
-
-
+from mydjango.views import Index
 
 urlpatterns = [
-    path('', views.loginpage, name = "login"),
+    path('', views.loginpage, name="login"),
     path('admin/', admin.site.urls),
-    path('signup/',views.signuppage, name = "signup"),
-    path('login/',views.loginpage, name = "login"),
-    path('home/', views.homepage, name = "home"),
-    path('logout/', views.logoutpage, name = "logout"),
-    path('buttons/', views.overview, name = "buttons")
-
-
-
-
-
-
+    path('signup/', views.signuppage, name="signup"),
+    path('login/', views.loginpage, name="login"),
+    path('home/', views.homepage, name="home"),
+    path('logout/', views.logoutpage, name="logout"),
+    path('buttons/', views.overview, name="buttons"),
+    path('passwortgenerator/', Index.as_view(), name="index")
 
 
 ]

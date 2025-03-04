@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'pwgenrator.css' %}">
+    <title>Password</title>
+</head>
+<body>
+    <div class="titleContainer">
+        <h1 class="title">Password Generator</h1>
+    </div>
+
+    <div class="card">
+        <form method="post">
+            {% csrf_token %}
+
+          <p class="lengthRange"><span id="lengthRange"></span></p>
+			{% for field in form %}
+			<div class="inputContainer">
+				    {{ field.errors }}
+				    {{ field.label_tag }} {{ field }}
+			</div>
+			{% endfor %}
+
+			<button class="submitButton">Generate</button>
+		</form>
+    </div>
+
+    <a class="backButton" href="{% url 'home' %}">Back to Home</a>
+
+<script>
+		const slider = document.getElementById('lengthRangeInput')
+		let output = document.getElementById('lengthRange')
+		output.innerHTML = slider.value
+
+		output.style.color = '#90ee90'
+		slider.oninput = function() {
+			if (this.value <= 10) {
+				// red
+				output.style.color = '#FF0000'
+			} else if (this.value < 20) {
+				// orange
+				output.style.color = '#FFBF00'
+			} else {
+				output.style.color = '#90ee90'
+			}
+
+			output.innerHTML = this.value
+		}
+	</script>
+</body>
+</html>
