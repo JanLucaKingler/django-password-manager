@@ -15,11 +15,11 @@ from mydjango.forms import PassGenForm
 # Create your views here.
 @login_required(login_url="login")
 @login_required(login_url='login')
-def homepage(request):
-    return render(request, "homepage.html")
+def home_page(request):
+    return render(request, "html/homepage.html")
 
 
-def signuppage(request):
+def sign_up_page(request):
     if request.method == 'POST':
         uname = request.POST.get('username')
         email = request.POST.get('email')
@@ -33,10 +33,10 @@ def signuppage(request):
             my_user.save()
         return redirect('login')
 
-    return render(request, 'signup.html')
+    return render(request, 'html/login/signup.html')
 
 
-def loginpage(request):
+def login_page(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -47,18 +47,20 @@ def loginpage(request):
             return redirect('home')
         else:
             return HttpResponse("Benutzername oder Password ist Falsch")
-    return render(request, 'login.html')
+    return render(request, 'html/login/login.html')
 
 
-def logoutpage(request):
+def logout_page(request):
     logout(request)
     return redirect('login')
 
-def passwordManager(request):
-    return render(request, "pwManager.html")
+
+def password_manager(request):
+    return render(request, "html/password/passwordmanager.html")
+
 
 def overview(request):
-    return render(request, "button.html")
+    return render(request, "html/button.html")
 
 
 class Index(View):
@@ -66,7 +68,7 @@ class Index(View):
         form = PassGenForm()
 
         context = {'form': form}
-        return render(request, 'index.html', context)
+        return render(request, 'html/password/passwordgenerator.html', context)
 
     def post(self, request):
 
@@ -83,4 +85,4 @@ class Index(View):
                 available_charaters = re.sub('|'.join(ambiguous_characters), '', available_charaters)
 
             password = ''.join(random.choice(available_charaters) for i in range(form.cleaned_data['length']))
-        return render(request, 'password.html', {'password': password})
+        return render(request, 'html/password/password.html', {'password': password})

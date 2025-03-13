@@ -1,5 +1,5 @@
 """
-URL configuration for python_website project.
+URL configuration for password_manager project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -22,15 +22,15 @@ from mydjango import views
 from mydjango.views import Index
 
 urlpatterns = [
-    path('', views.loginpage, name="login"),
+    path('', views.login_page, name="login"),
     path('admin/', admin.site.urls),
-    path('signup/', views.signuppage, name="signup"),
-    path('login/', views.loginpage, name="login"),
-    path('home/', views.homepage, name="home"),
-    path('logout/', views.logoutpage, name="logout"),
+    path('signup/', views.sign_up_page, name="signup"),
+    path('login/', views.login_page, name="login"),
+    path('home/', views.home_page, name="home"),
+    path('logout/', views.logout_page, name="logout"),
     path('buttons/', views.overview, name="buttons"),
-    path('passwortgenerator/', Index.as_view(), name="index"),
-    path('pwManager/', views.passwordManager, name="pwManager")
+    path('passwordgenerator/', Index.as_view(), name="index"),
+    path('passwordmanager/', views.password_manager, name="passwordmanager")
 
 
 ]
