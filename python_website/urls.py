@@ -29,7 +29,8 @@ urlpatterns = [
     path('home/', views.homepage, name="home"),
     path('logout/', views.logoutpage, name="logout"),
     path('buttons/', views.overview, name="buttons"),
-    path('passwortgenerator/', Index.as_view(), name="index")
+    path('passwortgenerator/', Index.as_view(), name="index"),
+    path('pwManager/', views.passwordManager, name="pwManager")
 
 
 ]

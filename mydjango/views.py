@@ -54,6 +54,8 @@ def logoutpage(request):
     logout(request)
     return redirect('login')
 
+def passwordManager(request):
+    return render(request, "pwManager.html")
 
 def overview(request):
     return render(request, "button.html")
