@@ -29,7 +29,4 @@ urlpatterns = [
     path('passwordgenerator/', Index.as_view(), name="index"),
     path('passwordmanager/', views.password_manager, name="passwordmanager"),
     path('account/', include('account.urls'))
-
-
-
 ]
