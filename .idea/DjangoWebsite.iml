@@ -5,8 +5,9 @@
       <excludeFolder url="file://$MODULE_DIR$/env" />
       <excludeFolder url="file://$MODULE_DIR$/env/Scripts/.venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.12 (DjangoPythonWebsite)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.13" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="boxicons" level="application" />
     <orderEntry type="library" name="boxicons" level="application" />
   </component>
 </module>
