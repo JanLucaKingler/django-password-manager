@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from .forms import PassGenForm
-import password
+from .models import PasswordEntry
+from .forms import PasswordForm
 from password.forms import PassGenForm
 
 
@@ -60,8 +60,25 @@ def password_manager(request):
     :return: HttpResponse object containing the rendered "Password Manager" HTML page.
     :rtype: HttpResponse
     """
-    return render(request, "html/password/passwordmanager.html")
+    if request.method == "POST":
+        form = PasswordForm(request.POST)
+        if form.is_valid():
+            password_entry = form.save(commit=False)
+            password_entry.user = request.user
+            password_entry.save()
+            return redirect('password_manager')
 
+    else:
+        form = PasswordForm()
+
+    passwords = PasswordEntry.objects.filter(user=request.user)
+
+    return render(request, "html/password/passwordmanager.html", {'passwords': passwords, 'form': form})
+
+def delete_password(request, password_id):
+    password_entry = PasswordEntry.objects.get(id=password_id)
+    password_entry.delete()
+    return redirect('password_manager')
 
 def overview(request):
     """

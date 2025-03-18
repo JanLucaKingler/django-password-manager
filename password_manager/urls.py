@@ -22,11 +22,13 @@ from password import views
 from password.views import Index
 
 urlpatterns = [
+    path('', include('account.urls')),
     path('admin/', admin.site.urls),
     path('home/', views.homepage, name="home"),
     path('logout/', views.logout_page, name="logout"),
     path('buttons/', views.overview, name="buttons"),
     path('passwordgenerator/', Index.as_view(), name="index"),
-    path('passwordmanager/', views.password_manager, name="passwordmanager"),
-    path('account/', include('account.urls'))
+    path('passwordmanager/', views.password_manager, name="password_manager"),
+    path('account/', include('account.urls')),
+    path('delete_password/<int:password_id>/', views.delete_password, name='delete_password')
 ]

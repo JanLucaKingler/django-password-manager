@@ -1,6 +1,8 @@
 from django import  forms
 from django.forms.widgets import NumberInput
 
+from password.models import PasswordEntry
+
 
 class RangeInput(NumberInput):
     input_type = 'range'
@@ -20,3 +22,9 @@ class PassGenForm(forms.Form):
         label='Include symbols (e.g. 00 l1 Z2)',
         required=False,
         widget=forms.CheckboxInput(attrs={'class': 'checkboxInout'}))
+
+
+class PasswordForm(forms.ModelForm):
+    class Meta:
+        model = PasswordEntry
+        fields = ["site_name", "password"]
