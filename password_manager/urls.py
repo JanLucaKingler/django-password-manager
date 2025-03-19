@@ -17,20 +17,18 @@ Including another URLconf
 from codecs import namereplace_errors
 
 from django.contrib import admin
-from django.urls import path
-from mydjango import views
-from mydjango.views import Index
+from django.urls import path, include
+from password import views
+from password.views import Index
 
 urlpatterns = [
-    path('', views.login_page, name="login"),
+    path('', include('account.urls')),
     path('admin/', admin.site.urls),
-    path('signup/', views.sign_up_page, name="signup"),
-    path('login/', views.login_page, name="login"),
-    path('home/', views.home_page, name="home"),
+    path('home/', views.homepage, name="home"),
     path('logout/', views.logout_page, name="logout"),
     path('buttons/', views.overview, name="buttons"),
     path('passwordgenerator/', Index.as_view(), name="index"),
-    path('passwordmanager/', views.password_manager, name="passwordmanager")
-
-
+    path('passwordmanager/', views.password_manager, name="password_manager"),
+    path('account/', include('account.urls')),
+    path('delete_password/<int:password_id>/', views.delete_password, name='delete_password')
 ]
