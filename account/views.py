@@ -3,22 +3,27 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib import messages
 
+
 def login_page(request):
     """
-    Handles user login by verifying the provided username and password against the
-    authenticated users in the system. If the authentication succeeds, the user is
-    logged in, and they are redirected to the home page. Otherwise, an error
-    message is displayed.
+        Verarbeitet den Benutzer-Login.
 
-    :param request: A Django HttpRequest object containing the request information
-        such as method, POST data, and session.
-    :type request: HttpRequest
+        - Prüft, ob die Anfrage vom Typ POST ist.
+        - Authentifiziert den Benutzer mit Benutzername und Passwort.
+        - Bei Erfolg: Anmeldung und Weiterleitung zur 'home'-Seite.
+        - Bei Misserfolg: Anzeige einer Fehlermeldung.
 
-    :return: A rendered login page template when the method is not POST or the
-        authentication fails. If authentication is successful, it redirects the
-        user to the home page.
-    :rtype: HttpResponse or HttpResponseRedirect
-    """
+        Parameter:
+        ----------
+        request: HttpRequest
+            die HTTP-Anfrage des Benutzers.
+
+        Rückgabewert:
+        -------------
+        HttpResponse
+            - Erfolgreiche Anmeldung: Weiterleitung zur 'home'-Seite.
+            - Fehlgeschlagene Anmeldung oder GET-Anfrage: Anzeige der Login-Seite.
+        """
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -33,18 +38,24 @@ def login_page(request):
 
 def sign_up_page(request):
     """
-    Displays the sign-up page and handles the user registration process. If the
-    request method is POST, it attempts to create a new user account. If the user
-    already exists, it displays an error message. Upon successful registration,
-    an informational message is shown and the user is redirected to the login page.
+      Verarbeitet die Benutzerregistrierung.
 
-    :param request: The HTTP request object containing metadata about the request
-            and user inputs from the sign-up form.
-    :type request: HttpRequest
-    :return: The rendered sign-up page if the request method is not POST, or a
-            redirect to the login page upon successful registration.
-    :rtype: HttpResponse
-    """
+      - Prüft, ob die Anfrage vom Typ POST ist.
+      - Überprüft, ob der Benutzername bereits existiert.
+      - Bei vorhandenem Benutzer: Fehlermeldung.
+      - Bei neuem Benutzer: Erstellt einen Account und leitet zur Login-Seite weiter.
+
+      Parameter:
+      ----------
+      request: HttpRequest
+          die HTTP-Anfrage des Benutzers.
+
+      Rückgabewert:
+      -------------
+      HttpResponse
+          - Erfolgreiche Registrierung: Weiterleitung zur Login-Seite.
+          - Bei Fehlern oder GET-Anfrage: Anzeige des Registrierungsformulars.
+      """
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
