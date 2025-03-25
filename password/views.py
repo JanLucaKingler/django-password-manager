@@ -136,6 +136,7 @@ class PasswordGeneratorView(View):
         :rtype: HttpResponse
         """
 
+        password = ""
         form = PassGenForm(request.POST)
 
         if form.is_valid():
@@ -148,5 +149,5 @@ class PasswordGeneratorView(View):
                 ambiguous_characters = 'lI1O0Z2S5'
                 available_characters = re.sub('|'.join(ambiguous_characters), '', available_characters)
 
-            password = ''.join(random.choice(available_characters) for i in range(form.cleaned_data['length']))
+            password = ''.join(random.choice(available_characters) for _ in range(form.cleaned_data['length']))
         return render(request, 'html/password/password.html', {'password': password})

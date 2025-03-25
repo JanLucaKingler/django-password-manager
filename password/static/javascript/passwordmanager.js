@@ -2,7 +2,8 @@
  *  Schaltet die Sichtbarkeit eines Passworts ein oder aus.
  *  Diese Funktion zeigt das Passwort an, wenn es derzeit verborgen ist, und verbirgt es, wenn es angezeigt wird.
  *  Sie ändert den `display`-Stil des Passwort-Elements.
- * @param id  Die eindeutige ID des Passwort-Elements, das angezeigt oder verborgen werden soll.
+ *
+ *  @param id  Die eindeutige ID des Passwort-Elements, das angezeigt oder verborgen werden soll.
  */
 function togglePassword(id) {
     let passwordElement = document.getElementById("password-" + id);

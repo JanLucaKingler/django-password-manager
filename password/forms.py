@@ -47,17 +47,17 @@ class PassGenForm(forms.Form):
        - Anpassung der Widgets erfolgt über `attrs`, um CSS-Klassen und IDs für das Styling zu setzen.
        """
     length = forms.IntegerField(
-        label='Password length',
+        label='Password-Länge:',
         required=True,
         widget=RangeInput(attrs={'min': '1', 'max': '64', 'class': 'range', 'id': 'lengthRangeInput'}))
 
     include_symbols = forms.BooleanField(
-        label='Include symbols (@&$!#?)',
+        label='Mit Symbolen (@&$!#?)',
         required=False,
         widget=forms.CheckboxInput(attrs={'class': 'checkboxInout'}))
 
     include_similar_characters = forms.BooleanField(
-        label='Include symbols (e.g. 00 l1 Z2)',
+        label='Mit Symbolen (e.g. 00 l1 Z2)',
         required=False,
         widget=forms.CheckboxInput(attrs={'class': 'checkboxInout'}))
 

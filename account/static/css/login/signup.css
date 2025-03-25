@@ -9,9 +9,8 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('../../images/img.jpg') no-repeat;
     background-size: cover;
-    background-position: center;
+    background: url('../../images/background.jpg') no-repeat center;
 }
 
 .wrapper{
@@ -41,7 +40,6 @@ body{
     width: 100%;
     height: 100%;
     background: transparent;
-    border: none;
     outline: none;
     border: 2px solid rgba(255,255,255,.2);
     border-radius: 40px;
