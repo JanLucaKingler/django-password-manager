@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from password import views
-from password.views import PasswordGeneratorView
+from password.views import PasswordGeneratorView, edit_password
 
 urlpatterns = [
     path('', include('account.urls')),
@@ -28,6 +28,7 @@ urlpatterns = [
     path('logout/', views.logout_page, name="logout"),
     path('passwordgenerator/', PasswordGeneratorView.as_view(), name="index"),
     path('passwordmanager/', views.password_manager, name="password_manager"),
+    path('password/edit/<int:password_id>/', edit_password, name='edit_password'),
     path('account/', include('account.urls')),
     path('delete_password/<int:password_id>/', views.delete_password, name='delete_password')
 ]

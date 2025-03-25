@@ -5,7 +5,7 @@ import string
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 
 from password.forms import PassGenForm
@@ -92,6 +92,44 @@ def delete_password(request, password_id):
         password_entry.delete()
 
     return redirect('password_manager')
+
+
+def edit_password(request, password_id):
+    """
+        Bearbeitet ein gespeichertes Passwort anhand seiner ID.
+
+        Diese Funktion lädt ein existierendes Passwort aus der Datenbank basierend auf `password_id`
+        und zeigt ein Formular zur Bearbeitung an. Falls das Formular gesendet wird, werden die Änderungen gespeichert.
+
+        Parameter:
+        - request: Das HTTP-Request-Objekt, das Metadaten und Benutzereingaben enthält.
+        - password_id (int): Die ID des Passwort-Eintrags, der bearbeitet werden soll.
+
+        Ablauf:
+        1. Das Passwort-Objekt wird mit `get_object_or_404` aus der Datenbank geladen.
+        2. Falls die Anfrage per `POST` kommt, wird das Formular mit den neuen Daten validiert.
+           - Ist das Formular gültig, werden die Änderungen gespeichert und der Nutzer zurück zur Passwortliste geleitet.
+        3. Falls die Anfrage per `GET` kommt, wird das Formular mit den aktuellen Passwort-Daten gefüllt und angezeigt.
+        4. Die View rendert die Vorlage `edit_password.html`, die das Formular enthält.
+
+        Rückgabe:
+        - Bei erfolgreicher Bearbeitung: Weiterleitung zur `password_manager`-Seite.
+        - Falls die Seite nur aufgerufen wird: HTML-Formular zur Bearbeitung.
+
+        Beispiel-URL:
+        - `/password/edit/3/` ruft `edit_password(request, password_id=3)` auf.
+    """
+    password_entry = get_object_or_404(PasswordEntry, id=password_id)
+
+    if request.method == "POST":
+        form = PasswordForm(request.POST, instance=password_entry)
+        if form.is_valid():
+            form.save()
+            return redirect('password_manager')  # Zurück zur Passwortliste
+    else:
+        form = PasswordForm(instance=password_entry)
+
+    return render(request, 'html/password/edit_password.html', {'form': form})
 
 
 class PasswordGeneratorView(View):
