@@ -73,20 +73,24 @@ def password_manager(request):
     return render(request, "html/password/passwordmanager.html", {'passwords': passwords, 'form': form})
 
 
-def delete_password(password_id):
+def delete_password(request, password_id):
     """
         Löscht einen Passwort-Eintrag basierend auf der übergebenen ID.
 
         Diese Methode sucht nach einem Passwort-Eintrag mit der angegebenen ID und löscht ihn aus der Datenbank.
         Nach dem Löschen wird der Benutzer zur Passwort-Verwaltungsseite weitergeleitet.
 
+        :param request:  Die HTTP-Anforderung.
         :param password_id: Die ID des Passwort-Eintrags, der gelöscht werden soll.
         :type password_id: int
         :return: Eine HttpResponse-Umleitung zur Passwort-Verwaltungsseite.
         :rtype: HttpResponse
         """
-    password_entry = PasswordEntry.objects.get(id=password_id)
-    password_entry.delete()
+    password_entry = PasswordEntry.objects.filter(id=password_id, user=request.user).first()
+
+    if password_entry:
+        password_entry.delete()
+
     return redirect('password_manager')
 
 

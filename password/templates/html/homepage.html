@@ -3,53 +3,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="vieport" content="widht=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passwort Manager</title>
     {% csrf_token %}
-    <link rel="stylesheet" href="{% static 'css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 </head>
 <body>
-<div class="content">
-    <h1 class="textTop">Dein zukünftiger Django-Python-Password-Manager</h1>
-
-//TODO:
-    -Namen alle Gleich
-    -Dokumentation auf Englisch
-
-    <div class="textmitte">
-        In der heutigen digitalen Welt sind Passwörter von entscheidender Bedeutung, um persönliche Daten, Konten und
-        sensible Informationen vor unbefugtem Zugriff zu schützen. Die Vielzahl an Online-Konten, die wir nutzen, führt
-        jedoch oft dazu, dass der Überblick über unsere Passwörter verloren geht. Dies resultiert nicht selten in der
-        Verwendung schwacher Passwörter oder der mehrfachen Nutzung eines Passworts für verschiedene Konten, was ein
-        erhebliches Sicherheitsrisiko darstellt.
-        <br>
-        <br>
-        Cyberkriminelle können mit einem einzigen kompromittierten Passwort Zugang zu mehreren Konten erhalten, was zu
-        erheblichen Schäden führen kann. Besonders kritisch wird es, wenn es um sensible Informationen wie Bankdaten oder
-        berufliche Zugänge geht, da der entstandene Schaden von
-        finanziellen Verlusten bis hin zu Identitätsdiebstahl reichen kann. Daher ist es unerlässlich, für jedes Konto
-        ein einzigartiges und starkes Passwort zu wählen. Doch gerade hier entsteht das Problem: Wie behält man all
-        diese Passwörter im Kopf, ohne auf unsichere Lösungen wie das Notieren auf Zetteln zurückzugreifen?
-        <br>
-        <br>
-        Um dieses Problem zu lösen, habe ich einen Passwort-Manager in Python entwickelt. Dieser bietet eine sichere und
-        benutzerfreundliche Möglichkeit, Passwörter zu generieren, zu speichern und bei Bedarf abzurufen, ohne dass
-        Daten an externe Server weitergegeben werden. Besonders wichtig war mir, dass der Passwort-Manager für Nutzer
-        ohne technische Vorkenntnisse einfach zu bedienen ist.
-        <br>
-        <br>
-        Der Manager ermöglicht zudem die Durchführung eines
-        Passwort-Checks, weist auf schwache oder mehrfach genutzte Passwörter hin und bietet Empfehlungen zur
-        Verbesserung der Sicherheit. Außerdem können Nutzer automatische Backups erstellen und individuelle
-        Sicherheitseinstellungen vornehmen. Alle gespeicherten Daten werden lokal verschlüsselt, sodass nur der Nutzer
-        selbst Zugang hat und das Risiko von Datenlecks oder Hacks minimiert wird.
+<main>
+    <div class="content">
+        <h1 class="textTop">Dein zukünftiger Django-Python-Password-Manager</h1>
 
 
+        <div class="textmitte">
+            In der heutigen digitalen Welt sind Passwörter von entscheidender Bedeutung, um persönliche Daten, Konten
+            und
+            sensible Informationen vor unbefugtem Zugriff zu schützen. Die Vielzahl an Online-Konten, die wir nutzen,
+            führt
+            jedoch oft dazu, dass der Überblick über unsere Passwörter verloren geht. Dies resultiert nicht selten in
+            der
+            Verwendung schwacher Passwörter oder der mehrfachen Nutzung eines Passworts für verschiedene Konten, was ein
+            erhebliches Sicherheitsrisiko darstellt.
+            <br>
+            <br>
+            Cyberkriminelle können mit einem einzigen kompromittierten Passwort Zugang zu mehreren Konten erhalten, was
+            zu
+            erheblichen Schäden führen kann. Besonders kritisch wird es, wenn es um sensible Informationen wie Bankdaten
+            oder
+            berufliche Zugänge geht, da der entstandene Schaden von
+            finanziellen Verlusten bis hin zu Identitätsdiebstahl reichen kann. Daher ist es unerlässlich, für jedes
+            Konto
+            ein einzigartiges und starkes Passwort zu wählen. Doch gerade hier entsteht das Problem: Wie behält man all
+            diese Passwörter im Kopf, ohne auf unsichere Lösungen wie das Notieren auf Zetteln zurückzugreifen?
+            <br>
+            <br>
+            Um dieses Problem zu lösen, habe ich einen Passwort-Manager in Python entwickelt. Dieser bietet eine sichere
+            und
+            benutzerfreundliche Möglichkeit, Passwörter zu generieren, zu speichern und bei Bedarf abzurufen, ohne dass
+            Daten an externe Server weitergegeben werden. Besonders wichtig war mir, dass der Passwort-Manager für
+            Nutzer
+            ohne technische Vorkenntnisse einfach zu bedienen ist.
+            <br>
+            <br>
+            Der Manager ermöglicht zudem die Durchführung eines
+            Passwort-Checks, weist auf schwache oder mehrfach genutzte Passwörter hin und bietet Empfehlungen zur
+            Verbesserung der Sicherheit. Außerdem können Nutzer automatische Backups erstellen und individuelle
+            Sicherheitseinstellungen vornehmen. Alle gespeicherten Daten werden lokal verschlüsselt, sodass nur der
+            Nutzer
+            selbst Zugang hat und das Risiko von Datenlecks oder Hacks minimiert wird.
+
+
+        </div>
+        <h2>Ein Python-Projekt von Julia Voth und Jan-Luca Kingler</h2>
     </div>
-    <h2>Ein Python-Projekt von Julia Voth und Jan-Luca Kingler</h2>
-</div>
+</main>
 <aside class="sidebar">
     <div class="sidebar-header">
         <img src="{% static 'images/logo.jpg' %}" alt="Logo">
@@ -65,7 +73,8 @@
                 <span class="material-symbols-outlined"> dashboard </span>Passwort Generator</a>
         </li>
         <li>
-            <a href="http://localhost:8000/passwordmanager/"><span class="material-symbols-outlined"> overview </span>Passwort Manager</a>
+            <a href="http://localhost:8000/passwordmanager/"><span class="material-symbols-outlined"> overview </span>Passwort
+                Manager</a>
         </li>
         <li>
             <a href="#"><span class="material-symbols-outlined"> monitoring </span>Settings</a>
@@ -89,7 +98,6 @@
             <img src="{% static 'images/admin.jpeg' %}" alt="Profile Image"/>
             <div class="user-detail">
                 <h3>{{ user.username }}</h3>
-                <span>admin</span>
             </div>
         </div>
     </div>

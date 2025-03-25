@@ -57,7 +57,7 @@ def sign_up_page(request):
           - Bei Fehlern oder GET-Anfrage: Anzeige des Registrierungsformulars.
       """
     if request.method == 'POST':
-        username = request.POST['username']
+        username = request.POST.get('username','')
         password = request.POST['password']
         if User.objects.filter(username=username).exists():
             messages.error(request, 'Benutzername existiert bereits')
